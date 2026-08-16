@@ -6,6 +6,9 @@
     <title>Job Tracker</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="any">
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
 </head>
 <body class="bg-light">
 
@@ -40,7 +43,7 @@
             <div class="card border shadow-none">
                 <div class="card-body">
 
-                    {{-- Cabeçalho: empresa, cargo, data e ações --}}
+
                     <div class="d-flex align-items-start justify-content-between gap-2">
                         <div>
                             <p class="fw-semibold mb-0">{{ $vaga['empresa'] }}</p>
