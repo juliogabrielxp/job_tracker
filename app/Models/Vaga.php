@@ -12,4 +12,9 @@ class Vaga extends Model
     'link_vaga',
     'anotacoes'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

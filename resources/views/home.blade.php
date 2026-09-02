@@ -12,18 +12,46 @@
 </head>
 <body class="bg-light">
 
-<div class="container py-5" style="max-width: 860px;">
+<nav class="navbar navbar-expand navbar-light bg-white border-bottom shadow-sm">
+    <div class="container" style="max-width: 860px;">
+        <a class="navbar-brand fw-semibold" href="{{ route('home') }}">
+            Job Tracker
+        </a>
 
+        <div class="dropdown ms-auto">
+            <button class="btn dropdown-toggle d-flex align-items-center gap-1"
+                    type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="d-none d-sm-inline">{{ auth()->user()->name }}</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li>
+                    <a class="dropdown-item" href="{{ route('profile.edit') }}">
+                        <i class="bi bi-gear me-2"></i> Perfil
+                    </a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="dropdown-item text-danger">
+                            <i class="bi bi-box-arrow-right me-2"></i> Sair
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container py-5" style="max-width: 860px;">
     <div class="d-flex align-items-center justify-content-between mb-4">
         <div>
-            <h1 class="h4 fw-semibold mb-0">Job Tracker</h1>
             <p class="text-muted small mb-0">Acompanhe suas candidaturas em um só lugar.</p>
         </div>
         <a href="{{ route('cadastrar_vaga') }}" class="btn btn-primary">
             <i class="bi bi-plus-lg"></i> Nova vaga
         </a>
     </div>
-
     @php
     $etapas = [
         'aplicado'     => ['label' => 'Aplicado',      'cor' => 'secondary', 'pct' => 20],
@@ -33,7 +61,6 @@
         'reprovado'    => ['label' => 'Reprovado',     'cor' => 'danger',    'pct' => 100],
     ];
 @endphp
-
 <div class="row g-3">
     @foreach($vagas as $vaga)
         @php
@@ -42,8 +69,6 @@
         <div class="col-12">
             <div class="card border shadow-none">
                 <div class="card-body">
-
-
                     <div class="d-flex align-items-start justify-content-between gap-2">
                         <div>
                             <p class="fw-semibold mb-0">{{ $vaga['empresa'] }}</p>
@@ -80,7 +105,6 @@
                             </form>
                         </div>
                     </div>
-
                     {{-- Barra de progresso --}}
                     <div class="mt-3">
                         <div class="d-flex justify-content-between align-items-center mb-1">
@@ -104,17 +128,13 @@
                             <span class="small text-muted">Concluído</span>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     @endforeach
 </div>
-
     <p class="text-muted small mt-2">{{ $vagas->count() }} vaga(s) cadastrada(s).</p>
-
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vaga;
 
+
 class JobController extends Controller
 {
     public function home()
     {
-        $vagas =  Vaga::all();
+        $vagas = auth()->user()->vagas()->latest()->get();
 
         return view('home', compact('vagas'));
     }
@@ -44,6 +45,7 @@ class JobController extends Controller
     $vaga->cargo = $request->cargo;
     $vaga->link_vaga = $request->link_vaga;
     $vaga->anotacoes = $request->anotacoes;
+    $vaga->user_id = auth()->id();
 
     $vaga->save();
 

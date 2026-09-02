@@ -20,6 +20,10 @@ return new class extends Migration
         $table->string('status')->default('aplicado');
         $table->timestamps();
     });
+
+    Schema::table('vagas', function (Blueprint $table) {
+        $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+    });
 }
 
 public function down(): void
