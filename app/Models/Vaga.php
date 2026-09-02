@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vaga extends Model
 {
     protected $fillable = [
+    'user_id',
     'empresa',
     'cargo',
     'link_vaga',

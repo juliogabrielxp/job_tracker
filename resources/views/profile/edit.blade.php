@@ -22,10 +22,15 @@
 
 <div class="container py-5" style="max-width: 640px;">
 
-    <div class="mb-4">
-        <h1 class="h4 fw-semibold mb-1">Meu perfil</h1>
-        <p class="text-muted small mb-0">Gerencie as informações da sua conta.</p>
-    </div>
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <div>
+          <h1 class="h4 fw-semibold mb-1">Meu perfil</h1>
+          <p class="text-muted small mb-0">Gerencie as informações da sua conta.</p>
+      </div>
+      <a href="{{ route('home') }}" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left"></i> Voltar
+      </a>
+  </div>
 
     @if (session('status') === 'profile-updated')
         <div class="alert alert-success alert-dismissible fade show">
